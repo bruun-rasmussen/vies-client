@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dk.es.br.vies</groupId>
+    <artifactId>vies-client</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <name>VIES service client</name>
+    <url>http://ec.europa.eu/taxation_customs/vies</url>
+    <description>
+        Java SOAP client for the European "VAT Information Exchange
+        System" (VIES) system for validation of VAT numbers
+    </description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <target>2.1</target>
+                            <verbose>true</verbose>
+                            <wsdlUrls>
+                                <wsdlUrl>http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl</wsdlUrl>
+                            </wsdlUrls>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

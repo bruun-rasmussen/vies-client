@@ -13,7 +13,7 @@ import javax.xml.ws.Holder;
 public class ViesVatService {
     private final CheckVatService svc = new CheckVatService();
 
-    private ViesVatRegistration lookup(String country, String vatNumber) {
+    public ViesVatRegistration lookup(String country, String vatNumber) {
         CheckVatPortType cv = svc.getCheckVatPort();
 
         Holder<String> country_ = new Holder(country);

@@ -3,7 +3,9 @@ package dk.es.br.vies;
 import eu.europa.ec.taxud.vies.services.checkvat.CheckVatPortType;
 import eu.europa.ec.taxud.vies.services.checkvat.CheckVatService;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.soap.SOAPFault;
 import javax.xml.ws.Holder;
+import javax.xml.ws.soap.SOAPFaultException;
 
 /**
  * @author      osa
@@ -23,7 +25,13 @@ public class ViesVatService {
         Holder<String> name_ = new Holder<String>();
         Holder<String> address_ = new Holder<String>();
 
-        cv.checkVat(country_, vatNumber_, date_, valid_, name_, address_);
+        try {
+            cv.checkVat(country_, vatNumber_, date_, valid_, name_, address_);
+        }
+        catch (SOAPFaultException ex) {
+            SOAPFault fault = ex.getFault();
+            throw new RuntimeException("[" + country + "-" + vatNumber + "] lookup failed: " + fault.getFaultString());
+        }
 
         if (!valid_.value)
             return null;

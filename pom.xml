@@ -4,14 +4,22 @@
 
     <groupId>dk.es.br.vies</groupId>
     <artifactId>vies-client</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
 
     <name>VIES service client</name>
     <url>http://ec.europa.eu/taxation_customs/vies</url>
+
     <description>
         Java SOAP client for the European "VAT Information Exchange
         System" (VIES) system for validation of VAT numbers
     </description>
+
+    <scm>
+        <connection>scm:git:git://github.com/bruun-rasmussen/vies-client.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/bruun-rasmussen/vies-client.git</developerConnection>
+        <url>https://github.com/bruun-rasmussen/vies-client/</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

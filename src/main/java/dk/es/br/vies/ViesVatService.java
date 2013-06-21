@@ -2,6 +2,9 @@ package dk.es.br.vies;
 
 import eu.europa.ec.taxud.vies.services.checkvat.CheckVatPortType;
 import eu.europa.ec.taxud.vies.services.checkvat.CheckVatService;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.soap.SOAPFault;
 import javax.xml.ws.Holder;
@@ -10,12 +13,11 @@ import javax.xml.ws.soap.SOAPFaultException;
 /**
  * @author      osa
  * @since       10-05-2013
- * @version     $Id: ViesVatService.java -1 10-05-2013 14:41:58 osa $
  */
 public class ViesVatService {
     private final CheckVatService svc = new CheckVatService();
 
-    public ViesVatRegistration lookup(String country, String vatNumber) {
+    public ViesVatRegistration lookup(String country, String vatNumber) throws ViesVatServiceException {
         CheckVatPortType cv = svc.getCheckVatPort();
 
         Holder<String> country_ = new Holder(country);
@@ -30,7 +32,9 @@ public class ViesVatService {
         }
         catch (SOAPFaultException ex) {
             SOAPFault fault = ex.getFault();
-            throw new RuntimeException("[" + country + "-" + vatNumber + "] lookup failed: " + fault.getFaultString());
+            String faultKey = fault.getFaultString();
+            String faultMessage = ResourceBundle.getBundle(ViesVatService.class.getName()).getString("vies.fault." + faultKey);
+            throw new ViesVatServiceException(faultKey, country + "-" + vatNumber + ": " + faultMessage);
         }
 
         if (!valid_.value)
@@ -47,7 +51,7 @@ public class ViesVatService {
         return res;
     }
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ViesVatServiceException {
         ViesVatService vl = new ViesVatService();
         ViesVatRegistration res = vl.lookup("DK", "26033489");
         System.out.println("vl.lookup(\"DK\", \"26033489\") = "+ res);

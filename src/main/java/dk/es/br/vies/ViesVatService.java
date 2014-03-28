@@ -2,8 +2,6 @@ package dk.es.br.vies;
 
 import eu.europa.ec.taxud.vies.services.checkvat.CheckVatPortType;
 import eu.europa.ec.taxud.vies.services.checkvat.CheckVatService;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.soap.SOAPFault;
@@ -53,7 +51,9 @@ public class ViesVatService {
 
     public static void main(String args[]) throws ViesVatServiceException {
         ViesVatService vl = new ViesVatService();
-        ViesVatRegistration res = vl.lookup("DK", "26033489");
-        System.out.println("vl.lookup(\"DK\", \"26033489\") = "+ res);
+        ViesVatRegistration resDk = vl.lookup("DK", "26033489");
+        System.out.println("vl.lookup(\"DK\", \"26033489\") = "+ resDk);
+        ViesVatRegistration resGr = vl.lookup("EL", "054934613");
+        System.out.println("vl.lookup(\"EL\", \"054934613\") = "+ resGr);
     }
 }

@@ -3,7 +3,7 @@
 
     <groupId>dk.es.br.vies</groupId>
     <artifactId>vies-client</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.4.1</version>
 
     <name>VIES service client</name>
     <url>http://ec.europa.eu/taxation_customs/vies</url>
@@ -17,7 +17,7 @@
         <connection>scm:git:git://github.com/bruun-rasmussen/vies-client.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/bruun-rasmussen/vies-client.git</developerConnection>
         <url>https://github.com/bruun-rasmussen/vies-client/</url>
-        <tag>HEAD</tag>
+        <tag>vies-client-0.4.1</tag>
     </scm>
 
     <properties>

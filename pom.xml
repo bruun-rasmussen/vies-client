@@ -45,9 +45,11 @@
                         <configuration>
                             <target>2.1</target>
                             <verbose>true</verbose>
-                            <wsdlUrls>
-                                <wsdlUrl>http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl</wsdlUrl>
-                            </wsdlUrls>
+                            <wsdlFiles>
+                                <!-- fetched from http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl -->
+                                <wsdlFile>vies/checkVatService.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
                         </configuration>
                     </execution>
                 </executions>

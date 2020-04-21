@@ -30,10 +30,10 @@ public class ViesVatService {
 
         Holder<String> country_ = new Holder(country);
         Holder<String> vatNumber_ = new Holder(vatNumber);
-        Holder<XMLGregorianCalendar> date_ = new Holder<XMLGregorianCalendar>();
-        Holder<Boolean> valid_ = new Holder<Boolean>();
-        Holder<String> name_ = new Holder<String>();
-        Holder<String> address_ = new Holder<String>();
+        Holder<XMLGregorianCalendar> date_ = new Holder();
+        Holder<Boolean> valid_ = new Holder();
+        Holder<String> name_ = new Holder();
+        Holder<String> address_ = new Holder();
 
         try {
             cv.checkVat(country_, vatNumber_, date_, valid_, name_, address_);

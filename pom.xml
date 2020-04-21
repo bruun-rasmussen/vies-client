@@ -65,7 +65,7 @@
                             <target>2.2</target>
                             <verbose>true</verbose>
                             <wsdlFiles>
-                                <!-- fetched from http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl -->
+                                <!-- fetched from https://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl -->
                                 <wsdlFile>vies/checkVatService.wsdl</wsdlFile>
                             </wsdlFiles>
                             <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>

@@ -4,8 +4,10 @@ import eu.europa.ec.taxud.vies.services.checkvat.CheckVatPortType;
 import eu.europa.ec.taxud.vies.services.checkvat.CheckVatService;
 import java.util.ResourceBundle;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPFault;
 import javax.xml.ws.Holder;
+import javax.xml.ws.WebServiceException;
 import javax.xml.ws.soap.SOAPFaultException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +38,10 @@ public class ViesVatService {
             String faultKey = fault.getFaultString();
             String faultMessage = ResourceBundle.getBundle(ViesVatService.class.getName()).getString("vies.fault." + faultKey);
             throw new ViesVatServiceException(faultKey, country + "-" + vatNumber + ": " + faultMessage);
+        }
+        catch (WebServiceException ex) {
+            LOG.error("{}-{} lookup failed", country, vatNumber, ex);
+            throw new ViesVatServiceException("WebServiceException", country + "-" + vatNumber + ": " + ex.getMessage());
         }
 
         if (!valid_.value)

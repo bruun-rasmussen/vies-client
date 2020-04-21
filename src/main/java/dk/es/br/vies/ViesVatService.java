@@ -48,12 +48,4 @@ public class ViesVatService {
 
         return res;
     }
-
-    public static void main(String args[]) throws ViesVatServiceException {
-        ViesVatService vl = new ViesVatService();
-        ViesVatRegistration resDk = vl.lookup("DK", "26033489");
-        System.out.println("vl.lookup(\"DK\", \"26033489\") = "+ resDk);
-        ViesVatRegistration resGr = vl.lookup("EL", "054934613");
-        System.out.println("vl.lookup(\"EL\", \"054934613\") = "+ resGr);
-    }
 }

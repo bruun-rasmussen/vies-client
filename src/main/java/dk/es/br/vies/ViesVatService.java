@@ -7,6 +7,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.soap.SOAPFault;
 import javax.xml.ws.Holder;
 import javax.xml.ws.soap.SOAPFaultException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author      osa
@@ -14,6 +16,7 @@ import javax.xml.ws.soap.SOAPFaultException;
  */
 public class ViesVatService {
     private final CheckVatService svc = new CheckVatService();
+    private static final Logger LOG = LoggerFactory.getLogger(ViesVatService.class);
 
     public ViesVatRegistration lookup(String country, String vatNumber) throws ViesVatServiceException {
         CheckVatPortType cv = svc.getCheckVatPort();
@@ -45,6 +48,7 @@ public class ViesVatService {
         res.setRequestDate(date_.value.toGregorianCalendar().getTime());
         res.setName(name_.value);
         res.setAddress(address_.value);
+        LOG.info("{}-{} : {}", country, vatNumber, res);
 
         return res;
     }

@@ -26,12 +26,12 @@ public class ViesVatService {
     public ViesVatRegistration lookup(String country, String vatNumber) throws ViesVatServiceException {
         CheckVatPortType cv = svc.getCheckVatPort();
 
-        Holder<String> country_ = new Holder(country);
-        Holder<String> vatNumber_ = new Holder(vatNumber);
-        Holder<XMLGregorianCalendar> date_ = new Holder();
-        Holder<Boolean> valid_ = new Holder();
-        Holder<String> name_ = new Holder();
-        Holder<String> address_ = new Holder();
+        Holder<String> country_ = new Holder<>(country);
+        Holder<String> vatNumber_ = new Holder<>(vatNumber);
+        Holder<XMLGregorianCalendar> date_ = new Holder<>();
+        Holder<Boolean> valid_ = new Holder<>();
+        Holder<String> name_ = new Holder<>();
+        Holder<String> address_ = new Holder<>();
 
         try {
             cv.checkVat(country_, vatNumber_, date_, valid_, name_, address_);

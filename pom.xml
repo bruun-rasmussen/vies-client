@@ -62,7 +62,7 @@
                             <goal>wsimport</goal>
                         </goals>
                         <configuration>
-                            <target>2.1</target>
+                            <target>2.2</target>
                             <verbose>true</verbose>
                             <wsdlFiles>
                                 <!-- fetched from http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl -->

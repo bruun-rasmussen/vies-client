@@ -5,7 +5,6 @@ import eu.europa.ec.taxud.vies.services.checkvat.CheckVatService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPFault;
 import javax.xml.ws.Holder;
 import javax.xml.ws.WebServiceException;
@@ -21,9 +20,8 @@ public class ViesVatService {
     private static final Logger LOG = LoggerFactory.getLogger(ViesVatService.class);
 
     private static final URL WSDL = ViesVatService.class.getClassLoader().getResource("wsdl/vies/checkVatService.wsdl");
-    private static final QName SVC_NAME = QName.valueOf("{urn:ec.europa.eu:taxud:vies:services:checkVat}checkVatService");
 
-    private final CheckVatService svc = new CheckVatService(WSDL, SVC_NAME);
+    private final CheckVatService svc = new CheckVatService(WSDL);
 
     public ViesVatRegistration lookup(String country, String vatNumber) throws ViesVatServiceException {
         CheckVatPortType cv = svc.getCheckVatPort();

@@ -26,6 +26,7 @@ public class ViesVatService {
     public ViesVatRegistration lookup(String country, String vatNumber) throws ViesVatServiceException {
         CheckVatPortType cv = svc.getCheckVatPort();
 
+        LOG.debug("{} lookup {}-{}...", svc.getServiceName(), country, vatNumber);
         Holder<String> country_ = new Holder<>(country);
         Holder<String> vatNumber_ = new Holder<>(vatNumber);
         Holder<XMLGregorianCalendar> date_ = new Holder<>();
@@ -47,8 +48,10 @@ public class ViesVatService {
             throw new ViesVatServiceException("WebServiceException", country + "-" + vatNumber + ": " + ex.getMessage());
         }
 
-        if (!valid_.value)
+        if (!valid_.value) {
+            LOG.info("{}-{} : not valid", country, vatNumber);
             return null;
+        }
 
         ViesVatRegistration res = new ViesVatRegistration();
 

@@ -8,8 +8,8 @@ Latest version available from Maven Central as:
   <dependency>
     <groupId>dk.bruun-rasmussen.vies</groupId>
     <artifactId>vies-client</artifactId>
-    <version>0.4.4</version>
-  <dependency>
+    <version>0.5.0</version>
+  </dependency>
 ```
 
 Building and testing

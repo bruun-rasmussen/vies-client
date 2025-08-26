@@ -5,10 +5,10 @@ import eu.europa.ec.taxud.vies.services.checkvat.CheckVatService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.soap.SOAPFault;
-import javax.xml.ws.Holder;
-import javax.xml.ws.WebServiceException;
-import javax.xml.ws.soap.SOAPFaultException;
+import jakarta.xml.soap.SOAPFault;
+import jakarta.xml.ws.Holder;
+import jakarta.xml.ws.WebServiceException;
+import jakarta.xml.ws.soap.SOAPFaultException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
